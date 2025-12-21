@@ -6,7 +6,7 @@ int main()
 {
 
     srand(time(0));
-    int randomNumber = (rand() % 101);
+    int randomNumber = (rand() % 100) +1;
     int user_num, count = 1;
     printf("Enter a number: ");
     scanf("%d", &user_num);
