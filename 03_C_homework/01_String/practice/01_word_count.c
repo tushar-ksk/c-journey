@@ -5,14 +5,17 @@ int main(){
     char str[100];
     printf("Enter a string: ");
     scanf("%[^\n]",str);
+    if (str[0] != ' ' && str[0] != '\n' && str[0] != '\t' && str[0] != '\0'){
+        count = 1;
+    }
     while (str[i] != '\0')
     {
-        if (str[i] == ' ' && str[i-1] != ' ' && str[i+1] != '\0')
+        if (str[i] != ' ' && str[i-1] == ' ' && str[i+1] != '\0')
         {
             count++;
         }
         i++;
     }
-    printf("%d",++count);
+    printf("%d",count);
     return 0;
 }
