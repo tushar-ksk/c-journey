@@ -1,35 +1,47 @@
 #include <stdio.h>
 
-int main()
-{
-    char str1[100], str_vow[100], str_cons[100], j = 0, k = 0;
-    printf("Enter the str: ");
-    scanf("%[^\n]", str1);
-    for (int i = 0; str1[i] != '\0'; i++)
+int main(){
+    int i = 0, j = 0, k = 0, l = 0, space_count = 0;
+    char str[100];
+    printf("Enter a string: ");
+    scanf("%[^\n]s",str);
+    char vow[100];
+    char cons[100];
+    char non_alpha[100];
+    for ( i = 0; str[i] != '\0'; i++)
     {
-        switch (str1[i])
+        switch (str[i])
         {
         case 'a': case 'A':
         case 'e': case 'E':
         case 'i': case 'I':
         case 'o': case 'O':
         case 'u': case 'U':
-            str_vow[j] = str1[i];
+            vow[j] = str[i];
             j++;
             break;
-        case ' ':
-            continue;
         default:
-            str_cons[k] = str1[i];
-            k++;
-            break;
+            if ((str[i] >= 'A' && str[i] <= 'Z')||(str[i] >= 'a' && str[i] <= 'z')){
+                cons[k] = str[i];
+                k++;
+            }
+            else if (str[i] == ' ')
+            {
+                space_count++;
+            }
+            else{
+                non_alpha[l] = str[i];
+                l++;
+            }
         }
     }
-    str_vow[j] = '\0';
-    str_cons[k] = '\0';
-    printf("%s\n", str1);
-    printf("%s\n", str_vow);
-    printf("%s\n", str_cons);
+    vow[j] = '\0';
+    cons[k] = '\0';
+    non_alpha[l] = '\0';
+    printf("%d vowels: %s\n", j, vow);
+    printf("%d consonants: %s\n", k, cons);
+    printf("%d Non Alphabetic Characters: %s\n", l, non_alpha);
+    printf("(Spaces)' ': %d\n",space_count);
 
     return 0;
 }
